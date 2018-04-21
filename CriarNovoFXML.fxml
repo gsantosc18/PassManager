@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.CriarNovoFXMLController">
+   <children>
+      <JFXTextField fx:id="lbTitulo" layoutX="148.0" layoutY="101.0" prefHeight="25.0" prefWidth="313.0" promptText="Título" />
+      <JFXTextField fx:id="lbUsuario" layoutX="148.0" layoutY="144.0" prefHeight="25.0" prefWidth="313.0" promptText="Usuário" />
+      <JFXTextField fx:id="lbEmail" layoutX="148.0" layoutY="187.0" prefHeight="25.0" prefWidth="313.0" promptText="Email" />
+      <JFXTextField fx:id="lbSenha" layoutX="148.0" layoutY="232.0" prefHeight="25.0" prefWidth="313.0" promptText="Senha" />
+      <JFXButton buttonType="RAISED" layoutX="148.0" layoutY="297.0" onAction="#actionSalvar" prefHeight="25.0" prefWidth="313.0" style="-fx-background-color: green;" text="Salvar" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="148.0" layoutY="335.0" onAction="#actionCancelar" prefHeight="25.0" prefWidth="313.0" style="-fx-background-color: blue;" text="Cancelar" textFill="WHITE" />
+   </children>
+</AnchorPane>

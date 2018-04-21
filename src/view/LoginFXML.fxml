@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.LoginFXMLController">
+   <children>
+      <JFXTextField fx:id="lbLogin" labelFloat="true" layoutX="144.0" layoutY="166.0" prefHeight="25.0" prefWidth="313.0" promptText="Login" />
+      <JFXPasswordField fx:id="lbSenha" layoutX="144.0" layoutY="221.0" prefHeight="25.0" prefWidth="313.0" promptText="Senha" />
+      <JFXButton buttonType="RAISED" layoutX="144.0" layoutY="279.0" onAction="#actionLogin" prefHeight="25.0" prefWidth="313.0" style="-fx-background-color: green;" text="Entrar" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="144.0" layoutY="312.0" onAction="#actionCadastro" prefHeight="25.0" prefWidth="313.0" style="-fx-background-color: blue;" text="Cadastrar" textFill="WHITE" />
+      <ImageView fitHeight="112.0" fitWidth="111.0" layoutX="236.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/iconLogin.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

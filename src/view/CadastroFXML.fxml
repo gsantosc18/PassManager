@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.CadastroFXMLController">
+   <children>
+      <JFXButton buttonType="RAISED" layoutX="132.0" layoutY="280.0" onAction="#actionDoCadastro" prefHeight="25.0" prefWidth="313.0" style="-fx-background-color: green;" text="Cadastrar" textFill="WHITE" AnchorPane.leftAnchor="132.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="280.0" />
+      <JFXButton buttonType="RAISED" layoutX="132.0" layoutY="323.0" onAction="#actionBack" prefHeight="25.0" prefWidth="313.0" style="-fx-background-color: blue;" text="Voltar" textFill="WHITE" AnchorPane.leftAnchor="132.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="323.0" />
+      <JFXTextField fx:id="lbLogin" layoutX="132.0" layoutY="130.0" prefHeight="25.0" prefWidth="313.0" promptText="Login" AnchorPane.leftAnchor="132.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="130.0" />
+      <JFXPasswordField fx:id="lbSenha" layoutX="132.0" layoutY="175.0" prefHeight="25.0" prefWidth="313.0" promptText="Senha" AnchorPane.leftAnchor="132.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="175.0" />
+      <JFXPasswordField fx:id="lbConfirmSenha" layoutX="132.0" layoutY="226.0" prefHeight="25.0" prefWidth="313.0" promptText="Confirmar Senha" AnchorPane.leftAnchor="132.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="226.0" />
+      <ImageView fitHeight="97.0" fitWidth="130.0" layoutX="228.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="228.0" AnchorPane.topAnchor="27.0">
+         <image>
+            <Image url="@../image/iconCadastro.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

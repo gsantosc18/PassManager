@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="65.0" layoutY="135.0" text="Título:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="164.0" text="Usuário:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="71.0" layoutY="195.0" text="Emai:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="227.0" text="Senha:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="76.0" layoutY="259.0" text="URL:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbTitulo" alignment="CENTER" layoutX="121.0" layoutY="137.0" prefHeight="15.0" prefWidth="438.0" text="Título" textAlignment="CENTER" AnchorPane.leftAnchor="121.0" />
+      <Label fx:id="lbUsuario" alignment="CENTER" layoutX="121.0" layoutY="166.0" prefHeight="15.0" prefWidth="438.0" text="Usuário" textAlignment="CENTER" AnchorPane.leftAnchor="121.0" />
+      <Label fx:id="lbEmail" alignment="CENTER" layoutX="121.0" layoutY="197.0" prefHeight="15.0" prefWidth="438.0" text="Email" textAlignment="CENTER" AnchorPane.leftAnchor="121.0" />
+      <Label fx:id="lbSenha" alignment="CENTER" layoutX="121.0" layoutY="229.0" prefHeight="15.0" prefWidth="438.0" text="Senha" textAlignment="CENTER" AnchorPane.leftAnchor="121.0" />
+      <Label fx:id="lbUrl" alignment="CENTER" layoutX="121.0" layoutY="261.0" prefHeight="15.0" prefWidth="438.0" text="URL" textAlignment="CENTER" AnchorPane.leftAnchor="121.0" />
+      <JFXButton buttonType="RAISED" layoutX="59.0" layoutY="330.0" onAction="#actionBack" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: blue;" text="Voltar" textFill="WHITE" />
+      <JFXButton layoutX="198.0" layoutY="330.0" onAction="#actionEditar" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: green;" text="Editar" textFill="WHITE" />
+      <JFXButton layoutX="332.0" layoutY="330.0" onAction="#actionApagar" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: red;" text="Apagar" textFill="WHITE" />
+      <ImageView fitHeight="84.0" fitWidth="84.0" layoutX="240.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/iconDetalhe.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
