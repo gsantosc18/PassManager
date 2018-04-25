@@ -58,6 +58,7 @@ public class LoginFXMLController implements Initializable {
             }
         }
         catch(Exception e){
+            System.out.println(e.getMessage());
             Notify.erro("Houve um erro no login, mas fica de boa e tenta mais uma vez!");
         }
     }

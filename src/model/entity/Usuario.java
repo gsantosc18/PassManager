@@ -1,5 +1,5 @@
 package model.entity;
-// Generated 19/04/2018 11:31:25 by Hibernate Tools 4.3.1
+// Generated 25/04/2018 20:14:49 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -21,6 +21,12 @@ public class Usuario  implements java.io.Serializable {
     public Usuario() {
     }
 
+	
+    public Usuario(String login, String senha, Date cadastro) {
+        this.login = login;
+        this.senha = senha;
+        this.cadastro = cadastro;
+    }
     public Usuario(String login, String senha, Date cadastro, Set managers) {
        this.login = login;
        this.senha = senha;

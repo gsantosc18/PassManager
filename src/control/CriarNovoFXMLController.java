@@ -55,12 +55,15 @@ public class CriarNovoFXMLController implements Initializable {
             manager.setSenha(senha);
             manager.setUrl(url);
             manager.setUsuario(UsuarioCache.getUsuario());
+            try{
+                managerDAO.save(manager);
+                
+                Notify.info("Chave de acesso foi cadastrada com sucesso!");
 
-            managerDAO.save(manager);
-
-            Notify.info("Chave de acesso foi cadastrada com sucesso!");
-
-            actionCancelar();
+                actionCancelar();
+            }catch(Exception e){
+                Notify.erro("Houve um erro no cadastro da credencial!");
+            }
         }
     }
     

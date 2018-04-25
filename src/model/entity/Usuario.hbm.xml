@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 19/04/2018 11:31:26 by Hibernate Tools 4.3.1 -->
+<!-- Generated 25/04/2018 20:14:50 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="model.entity.Usuario" table="usuario" catalog="passmanager" optimistic-lock="version">
+    <class name="model.entity.Usuario" table="usuario" catalog="u512821720_passm" optimistic-lock="version">
         <id name="idUsuario" type="java.lang.Integer">
             <column name="id_usuario" />
             <generator class="identity" />
         </id>
         <property name="login" type="string">
-            <column name="login" length="45" />
+            <column name="login" length="200" not-null="true" />
         </property>
         <property name="senha" type="string">
-            <column name="senha" length="45" />
+            <column name="senha" length="200" not-null="true" />
         </property>
         <property name="cadastro" type="timestamp">
-            <column name="cadastro" length="19" />
+            <column name="cadastro" length="19" not-null="true" />
         </property>
         <set name="managers" table="manager" inverse="true" lazy="true" fetch="select">
             <key>

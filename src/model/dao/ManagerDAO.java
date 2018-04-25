@@ -37,6 +37,7 @@ public class ManagerDAO {
             session.save(manager);        
             session.getTransaction().commit();
         }catch(Exception e){
+            System.out.println(e.getMessage());
             session.getTransaction().rollback();
         }
     }

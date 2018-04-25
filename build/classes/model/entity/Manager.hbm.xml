@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 19/04/2018 11:31:26 by Hibernate Tools 4.3.1 -->
+<!-- Generated 25/04/2018 20:14:50 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="model.entity.Manager" table="manager" catalog="passmanager" optimistic-lock="version">
+    <class name="model.entity.Manager" table="manager" catalog="u512821720_passm" optimistic-lock="version">
         <id name="idManager" type="java.lang.Integer">
             <column name="id_manager" />
             <generator class="identity" />
@@ -12,16 +12,16 @@
             <column name="id_usuario" not-null="true" />
         </many-to-one>
         <property name="titulo" type="string">
-            <column name="titulo" length="200" />
+            <column name="titulo" length="200" not-null="true" />
         </property>
         <property name="usuario_1" type="string">
-            <column name="usuario" length="200" />
+            <column name="usuario" length="200" not-null="true" />
         </property>
         <property name="email" type="string">
-            <column name="email" length="200" />
+            <column name="email" length="200" not-null="true" />
         </property>
         <property name="senha" type="string">
-            <column name="senha" length="200" />
+            <column name="senha" length="200" not-null="true" />
         </property>
         <property name="url" type="string">
             <column name="url" length="200" />
