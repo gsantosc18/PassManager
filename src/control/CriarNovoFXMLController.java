@@ -62,6 +62,7 @@ public class CriarNovoFXMLController implements Initializable {
 
                 actionCancelar();
             }catch(Exception e){
+                System.out.println("Erro: "+e.getMessage());
                 Notify.erro("Houve um erro no cadastro da credencial!");
             }
         }

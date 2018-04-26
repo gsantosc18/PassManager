@@ -35,22 +35,8 @@ public class Scenario {
         scenario =  stage;
     }
        
-    public static void show(){
-        scenario.setOnCloseRequest(new EventHandler<WindowEvent>(){
-            @Override
-            public void handle(WindowEvent event) {
-                scenario.hide();
-                new Thread(){
-                    @Override
-                    public void run(){                        
-                        HibernateUtil.getSessionFactory().close();
-                    }
-                }.start();
-            }
-        });
-        
-        Scene scena = scenario.getScene();
-        
+    public static void show(){        
+        Scene scena = scenario.getScene();        
         scenario.minWidthProperty().bind(scena.widthProperty());
         scenario.minHeightProperty().bind(scena.heightProperty());
         scenario.show();

@@ -11,41 +11,27 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class UsuarioDAO {
-    
-    private Session session;
-    private Transaction transaction;
-    
+        
     public Usuario login(String email, String senha){
         Usuario usuario = null;
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
-        transaction = null;
-        try{
-            transaction = session.beginTransaction();       
-            usuario = (Usuario) session.createQuery("From Usuario where login = ? and senha = ?")
-            .setParameter(0, email)
-            .setParameter(1, senha)
-            .uniqueResult();
-            transaction.commit();
-        }catch(Exception ex){
-            if(transaction!=null){
-                transaction.rollback();
-            }
-        }
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction = session.beginTransaction();       
+        
+        usuario = (Usuario) session.createQuery("From Usuario where login = ? and senha = ?")
+        .setParameter(0, email)
+        .setParameter(1, senha)
+        .uniqueResult();
+        transaction.commit();
         
         return usuario;
     }
     
     public void insert(Usuario usuario){
+        Session session;
+        Transaction transaction;
         session = HibernateUtil.getSessionFactory().getCurrentSession();
-        transaction = null;
-        try{
-            transaction = session.beginTransaction();
-            session.save(usuario);
-            transaction.commit();
-        }catch(Exception ex){
-            if(transaction!=null){
-                transaction.rollback();
-            }
-        }
+        transaction = session.beginTransaction();  
+        session.save(usuario);
+        transaction.commit();
     }
 }

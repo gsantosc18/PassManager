@@ -4,7 +4,7 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://socialacademic.xyz:3306/u512821720_passm</property>
+    <property name="hibernate.connection.url">jdbc:mysql://socialacademic.xyz:3306/u512821720_passm?charset=utf8</property>
     <property name="hibernate.connection.username">u512821720_passm</property>
     <property name="hibernate.connection.password">24865310</property>
     <property name="hibernate.current_session_context_class">thread</property>
