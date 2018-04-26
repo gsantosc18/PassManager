@@ -11,10 +11,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import model.dao.UsuarioDAO;
 import model.entity.Usuario;
 import model.util.Notify;
@@ -51,7 +48,7 @@ public class LoginFXMLController implements Initializable {
                 if(usuario!=null){                
                     Notify.info("Seu login foi realizado com sucesso!");
                     UsuarioCache.setUsuario(usuario);
-                    Scenario.show(getClass().getResource("../view/TableManagerFXML.fxml"));
+                    Scenario.show("view/TableManagerFXML.fxml");
                 }else{
                     Notify.warning("Algum coisa tá errado aí oh! :(");
                 }
@@ -65,10 +62,6 @@ public class LoginFXMLController implements Initializable {
     
     
     @FXML private void actionCadastro() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("../view/CadastroFXML.fxml"));
-        
-        Scene sena = new Scene(root);
-        
-        Scenario.setScene(sena);
+        Scenario.show("view/CadastroFXML.fxml");
     }
 }

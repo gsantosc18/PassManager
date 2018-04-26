@@ -45,7 +45,7 @@ public class DetalheFXMLController implements Initializable {
     }
     
     @FXML private void actionBack() throws IOException{
-        Scenario.show(getClass().getResource("../view/TableManagerFXML.fxml"));
+        Scenario.show("view/TableManagerFXML.fxml");
     }
     
     @FXML private void actionEditar(){

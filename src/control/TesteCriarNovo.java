@@ -18,7 +18,7 @@ public class TesteCriarNovo extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {        
         Scenario.setStage(primaryStage);        
-        Scenario.show(getClass().getResource("../view/CriarNovoFXML.fxml"));
+        Scenario.show("../view/CriarNovoFXML.fxml");
     }
     
     public static void main(String[] args) {

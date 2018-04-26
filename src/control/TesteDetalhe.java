@@ -18,7 +18,7 @@ public class TesteDetalhe extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {        
         Scenario.setStage(primaryStage);        
-        Scenario.show(getClass().getResource("../view/DetalheFXML.fxml"));
+        Scenario.show("../view/DetalheFXML.fxml");
     }
     
     public static void main(String[] args) {

@@ -85,7 +85,7 @@ public class TableManagerFXMLController implements Initializable {
     }
     
     @FXML private void actionCriarNovo() throws IOException{
-        Scenario.show(getClass().getResource("../view/CriarNovoFXML.fxml"));
+        Scenario.show("view/CriarNovoFXML.fxml");
     }
     
 }

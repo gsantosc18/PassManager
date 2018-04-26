@@ -7,6 +7,10 @@ package model.util;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -35,27 +39,50 @@ public class Scenario {
         scenario.setOnCloseRequest(new EventHandler<WindowEvent>(){
             @Override
             public void handle(WindowEvent event) {
-                HibernateUtil.getSessionFactory().close();
+                scenario.hide();
+                new Thread(){
+                    @Override
+                    public void run(){                        
+                        HibernateUtil.getSessionFactory().close();
+                    }
+                }.start();
             }
         });
         
+        Scene scena = scenario.getScene();
+        
+        scenario.minWidthProperty().bind(scena.widthProperty());
+        scenario.minHeightProperty().bind(scena.heightProperty());
         scenario.show();
     }
     
-    public static void show(URL location) throws IOException{
+    public static void show(String file){          
+        try {
+            ZipFile zipfile = new ZipFile(System.getProperty("java.class.path"));
+            ZipEntry entry = zipfile.getEntry(file);            
+            URL location = ClassLoader.getSystemResource(entry.getName());        
             Parent root = FXMLLoader.load(location);
             Scene scene = new Scene(root);        
             scenario.setScene(scene);
-
             show();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
     
-    public static void show(URL location, Object controller) throws IOException{
+    public static void show(String file, Object controller){
+        try {
+            ZipFile zipfile = new ZipFile(System.getProperty("java.class.path"));            
+            ZipEntry entry = zipfile.getEntry(file);            
+            URL location = ClassLoader.getSystemResource(entry.getName());            
             FXMLLoader loader = new FXMLLoader(location);
             loader.setController(controller);
             Parent root = loader.load();
             Scene scene = new Scene(root);        
             scenario.setScene(scene);
             show();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }

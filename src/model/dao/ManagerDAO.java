@@ -5,48 +5,73 @@
  */
 package model.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import model.entity.Manager;
 import model.util.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 public class ManagerDAO {
 
     private Session session;
-
-    public ManagerDAO() {
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
-    }
+    private Transaction transaction;
     
     public List<Manager> listaByIdUsuario(int id_usuario){
-        session.beginTransaction();
-        
-        List<Manager> lista =  (List<Manager>) session
-                .createQuery("from Manager where id_usuario = ?")
-                .setParameter(0, id_usuario)
-                .list();
-        
-        session.getTransaction().commit();
+        List<Manager> lista = new ArrayList<>();
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        transaction = null;
+        try{
+            transaction = session.beginTransaction();
+            lista =  session
+                    .createQuery("from Manager where id_usuario = ?")
+                    .setParameter(0, id_usuario)
+                    .list();
+            transaction.commit();
+        }catch(Exception ex){
+            if(transaction!=null){
+                transaction.rollback();
+            }
+        }finally{
+            session.close();
+        }
         
         return lista;
     }
     
     public void save(Manager manager){
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        transaction = null;
         try{
-            session.beginTransaction();
-            session.save(manager);        
-            session.getTransaction().commit();
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-            session.getTransaction().rollback();
+            transaction = session.beginTransaction();
+            session.save(manager);
+            transaction.commit();
+        }catch(Exception ex){
+            if(transaction!=null){
+                transaction.rollback();
+            }
+        }finally{
+            session.close();
         }
     }
     
     public Manager findById(int id){
-        session.beginTransaction();
-        Manager manager = (Manager) session.get(Manager.class,id);
-        session.getTransaction().commit();
+        Manager manager = null;
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        transaction = null;
+        
+        try{
+            transaction = session.beginTransaction();
+            manager = (Manager) session.get(Manager.class,id);
+            transaction.commit();
+        }catch(Exception ex){
+            if(transaction!=null){
+                transaction.rollback();
+            }
+        }finally{
+            session.close();
+        }
+        
         return manager;
     }
-    
 }

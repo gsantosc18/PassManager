@@ -15,7 +15,7 @@
             <column name="senha" length="200" not-null="true" />
         </property>
         <property name="cadastro" type="timestamp">
-            <column name="cadastro" length="19" not-null="true" />
+            <column name="cadastro" length="19" />
         </property>
         <set name="managers" table="manager" inverse="true" lazy="true" fetch="select">
             <key>

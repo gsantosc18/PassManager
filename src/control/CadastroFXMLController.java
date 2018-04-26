@@ -66,7 +66,7 @@ public class CadastroFXMLController implements Initializable {
     }
     
     @FXML private void actionBack() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("../view/LoginFXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/LoginFXML.fxml"));
         
         Scene sena = new Scene(root);
         

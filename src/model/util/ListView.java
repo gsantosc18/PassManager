@@ -31,17 +31,11 @@ public class ListView {
         this.detalhes = new JFXButton("Detalhes");
         detalhes.setStyle("-fx-background-color: blue;-fx-text-fill: #FFFFFF;");
         
-        URL location = ListView.class.getClass().getResource("/view/DetalheFXML.fxml");
-        
         this.detalhes.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
-                try {
-                    Manager manager = new ManagerDAO().findById(getID());
-                    Scenario.show(ListView.class.getClass().getResource("/view/DetalheFXML.fxml"), new DetalheFXMLController(manager));
-                } catch (IOException ex) {
-                    Logger.getLogger(ListView.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                Manager manager = new ManagerDAO().findById(getID());
+                Scenario.show("view/DetalheFXML.fxml", new DetalheFXMLController(manager));
             }
         });
     }

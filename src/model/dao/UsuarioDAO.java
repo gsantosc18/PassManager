@@ -8,39 +8,49 @@ package model.dao;
 import model.entity.Usuario;
 import model.util.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 public class UsuarioDAO {
     
     private Session session;
+    private Transaction transaction;
     
-    public UsuarioDAO(){
+    public Usuario login(String email, String senha){
+        Usuario usuario = null;
         session = HibernateUtil.getSessionFactory().getCurrentSession();
-    }
-    
-    public Usuario login(String email, String senha){        
+        transaction = null;
         try{
-            session.beginTransaction();        
-        Usuario usuario = (Usuario) session.createQuery("From Usuario where login = ? and senha = ?")
+            transaction = session.beginTransaction();       
+            usuario = (Usuario) session.createQuery("From Usuario where login = ? and senha = ?")
             .setParameter(0, email)
             .setParameter(1, senha)
             .uniqueResult();
-            session.getTransaction().commit();
+            transaction.commit();
             
-            return usuario;
-            
-        }catch(Exception e){
-            session.getTransaction().rollback();
-            return null;
+        }catch(Exception ex){
+            if(transaction!=null){
+                transaction.rollback();
+            }
+        }finally{
+            session.close();
         }
+        
+        return usuario;
     }
     
     public void insert(Usuario usuario){
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        transaction = null;
         try{
-            session.beginTransaction();
+            transaction = session.beginTransaction();
             session.save(usuario);
-            session.getTransaction().commit();  
-        }catch(Exception e){
-            session.getTransaction().rollback();
+            transaction.commit();
+        }catch(Exception ex){
+            if(transaction!=null){
+                transaction.rollback();
+            }
+        }finally{
+            session.close();
         }
     }
 }
