@@ -66,7 +66,7 @@ public class Scenario {
             scenario.setScene(scene);
             show();
         } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("Erro: "+ex.getMessage());
         }
     }
     
@@ -81,8 +81,8 @@ public class Scenario {
             Scene scene = new Scene(root);        
             scenario.setScene(scene);
             show();
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println("Erro: "+ex.getMessage());
         }
     }
 }

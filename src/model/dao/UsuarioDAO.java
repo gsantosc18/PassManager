@@ -26,13 +26,10 @@ public class UsuarioDAO {
             .setParameter(1, senha)
             .uniqueResult();
             transaction.commit();
-            
         }catch(Exception ex){
             if(transaction!=null){
                 transaction.rollback();
             }
-        }finally{
-            session.close();
         }
         
         return usuario;
@@ -49,8 +46,6 @@ public class UsuarioDAO {
             if(transaction!=null){
                 transaction.rollback();
             }
-        }finally{
-            session.close();
         }
     }
 }

@@ -24,17 +24,6 @@ public class Principal extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         try{
-//            ZipFile zipfile = new ZipFile(System.getProperty("java.class.path"));
-            
-//            ZipEntry inputStream = zipfile.getEntry("view/LoginFXML.fxml");
-//            
-//            URL location = ClassLoader.getSystemResource(inputStream.getName());
-//            
-//            Parent root = FXMLLoader.load(location);
-//            Scene scene = new Scene(root);
-//
-//            primaryStage.setScene(scene);
-
             Scenario.setStage(primaryStage);
             Scenario.show("view/LoginFXML.fxml");
         }catch(Exception e){

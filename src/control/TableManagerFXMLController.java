@@ -81,6 +81,8 @@ public class TableManagerFXMLController implements Initializable {
             }
 
             this.tableLista.setItems(lista);        
+        }else{
+            System.out.println("O usuário guardado no cache está vazio!");
         }
     }
     

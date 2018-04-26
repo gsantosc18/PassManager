@@ -32,8 +32,6 @@ public class ManagerDAO {
             if(transaction!=null){
                 transaction.rollback();
             }
-        }finally{
-            session.close();
         }
         
         return lista;
@@ -50,8 +48,6 @@ public class ManagerDAO {
             if(transaction!=null){
                 transaction.rollback();
             }
-        }finally{
-            session.close();
         }
     }
     
@@ -68,8 +64,6 @@ public class ManagerDAO {
             if(transaction!=null){
                 transaction.rollback();
             }
-        }finally{
-            session.close();
         }
         
         return manager;
