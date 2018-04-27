@@ -7,16 +7,12 @@ package model.util;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 /**
  *
@@ -36,7 +32,8 @@ public class Scenario {
     }
        
     public static void show(){        
-        Scene scena = scenario.getScene();        
+        Scene scena = scenario.getScene();
+        scenario.sizeToScene();
         scenario.minWidthProperty().bind(scena.widthProperty());
         scenario.minHeightProperty().bind(scena.heightProperty());
         scenario.show();
