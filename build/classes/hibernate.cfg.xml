@@ -7,6 +7,11 @@
     <property name="hibernate.connection.url">jdbc:mysql://socialacademic.xyz:3306/u512821720_passm?charset=utf8</property>
     <property name="hibernate.connection.username">u512821720_passm</property>
     <property name="hibernate.connection.password">24865310</property>
+    <property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+    <property name="c3p0.idle_test_period">140</property>
+    <property name="c3p0.preferredTestQuery">select 1;</property>
+    <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+    <property name="show_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <mapping resource="model/entity/Manager.hbm.xml"/>
     <mapping resource="model/entity/Usuario.hbm.xml"/>
