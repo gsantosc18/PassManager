@@ -14,6 +14,10 @@ import org.hibernate.Transaction;
 
 public class ManagerDAO {
     
+    /**
+     * @param id_usuario
+     * @return List<Manager>
+     */
     public List<Manager> listaByIdUsuario(int id_usuario){
         List<Manager> lista = new ArrayList<>();
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -27,6 +31,9 @@ public class ManagerDAO {
         return lista;
     }
     
+    /**
+     * @param manager 
+     */
     public void save(Manager manager){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();;
         Transaction transaction = session.beginTransaction();  
@@ -35,6 +42,10 @@ public class ManagerDAO {
         transaction.commit();
     }
     
+    /**
+     * @param id
+     * @return Manager
+     */
     public Manager findById(int id){
         Manager manager = null;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -44,5 +55,12 @@ public class ManagerDAO {
         transaction.commit();
         
         return manager;
+    }
+    
+    public void delete(Manager manager){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();;
+        Transaction transaction = session.beginTransaction();        
+        session.delete(manager);
+        transaction.commit();
     }
 }

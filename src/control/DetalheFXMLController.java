@@ -6,11 +6,15 @@
 package control;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import model.dao.ManagerDAO;
 import model.entity.Manager;
+import model.util.Notify;
 import model.util.Scenario;
 
 /**
@@ -52,8 +56,15 @@ public class DetalheFXMLController implements Initializable {
         
     }
     
-    @FXML private void actionApagar(){
+    @FXML private void actionApagar() throws IOException{
+        Optional<ButtonType> response = Notify.confirm("Você tem certeza que quer apagar?", "Apagar "+manager.getTitulo()+"?");
         
+        if(response.get()==ButtonType.OK){
+            ManagerDAO managerDAO = new ManagerDAO();
+            managerDAO.delete(manager);
+            Notify.info("O registro foi deletado com sucesso!");
+            actionBack();
+        }
     }
     
 }

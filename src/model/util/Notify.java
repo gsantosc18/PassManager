@@ -1,44 +1,34 @@
 package model.util;
 
+import java.util.Optional;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 
 public class Notify {
     static private Alert alert = null;
     
     public static void erro(String message){
-        if(alert==null){
-            alert = new Alert(AlertType.ERROR);
-            alert.setHeaderText(null);
-        }
-        
-        alert.setAlertType(AlertType.ERROR);
-        alert.setTitle("Erro");
-        alert.setContentText(message);
-        alert.show();
+        alert(AlertType.ERROR, message, "Erro");
     }
     
     public static void info(String message){
-        if(alert==null){
-            alert = new Alert(AlertType.INFORMATION);
-            alert.setHeaderText(null);
-        }
-        
-        alert.setAlertType(AlertType.INFORMATION);        
-        alert.setTitle("Informação");
-        alert.setContentText(message);
-        alert.show();
+        alert(AlertType.INFORMATION, message, "Informação");
     }
     
     public static void warning(String message){
-        if(alert==null){
-            alert = new Alert(AlertType.WARNING);
-            alert.setHeaderText(null);
-        }
-        
-        alert.setAlertType(AlertType.WARNING);
-        alert.setTitle("Atenção");
+        alert(AlertType.CONFIRMATION, message, "Atenção");
+    }
+    
+    public static Optional<ButtonType> confirm(String message, String header){
+        return alert(AlertType.CONFIRMATION, message, header);
+    }
+    
+    private static Optional<ButtonType> alert(AlertType type, String message, String title){
+        alert = new Alert(type);
+        alert.setHeaderText(null);        
+        alert.setTitle(title);
         alert.setContentText(message);
-        alert.show();
+        return alert.showAndWait();
     }
 }
