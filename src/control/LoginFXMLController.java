@@ -10,8 +10,18 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.WindowEvent;
 import model.dao.UsuarioDAO;
 import model.entity.Usuario;
 import model.util.Notify;
@@ -29,37 +39,56 @@ public class LoginFXMLController implements Initializable {
     
     @FXML JFXPasswordField lbSenha;
     
+    @FXML AnchorPane anchorPane;
+    
+    @FXML Pane wrap;
+    
+    @FXML Pane waitePane;
+    
+    @FXML Pane boxView;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        hideWaite();
     }    
     
     
     @FXML private void actionLogin() throws IOException{
-        try{
-            String login = this.lbLogin.getText();
-            String senha = this.lbSenha.getText();
-            
-            if(login.trim().isEmpty()||senha.trim().isEmpty()){
-                Notify.info("Preencha corretamente o Login e Senha");
-            }else{
+        String login = this.lbLogin.getText();
+        String senha = this.lbSenha.getText();
+        
+        showWaite();
+
+        if(login.trim().isEmpty()||senha.trim().isEmpty()){
+            Notify.info("Preencha corretamente o Login e Senha");
+        }else{
+            new Thread(() -> {
                 UsuarioDAO usuarioDao = new UsuarioDAO();
                 Usuario usuario = usuarioDao.login(login, senha);
-
-                if(usuario!=null){                
-                    Notify.info("Seu login foi realizado com sucesso!");
-                    UsuarioCache.setUsuario(usuario);
-                    Scenario.show("view/TableManagerFXML.fxml");
+                if(usuario!=null){
+                        UsuarioCache.setUsuario(usuario);
+                        Platform.runLater(()->{
+                            try {
+                                Scenario.show("view/TableManagerFXML.fxml");
+                            } catch (IOException ex) {
+                                System.out.println("Erro: "+ex.getMessage());
+                            }
+                        });
                 }else{
-                    Notify.warning("Algum coisa tá errado aí oh! :(");
+                    Platform.runLater(()->{Notify.warning("Algum coisa tá errado aí! :(");});
                 }
-            }
-        }
-        catch(Exception e){
-            System.out.println(e.getMessage());
-            Notify.erro("Houve um erro no login, mas fica de boa e tenta mais uma vez!");
+                hideWaite();
+            }).start();
         }
     }
     
+    private void showWaite(){
+        waitePane.setVisible(true);
+    }
+    
+    private void hideWaite(){
+        waitePane.setVisible(false);
+    }
     
     @FXML private void actionCadastro() throws IOException{
         Scenario.show("view/CadastroFXML.fxml");

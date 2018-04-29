@@ -6,12 +6,10 @@
 package model.util;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -30,35 +28,31 @@ public class Scenario {
     public static void setStage(Stage stage){
         scenario =  stage;
     }
+    
+    public static Scene getScene(){
+        return scenario.getScene();
+    }
        
-    public static void show(){        
+    public static void show() throws IOException{
         Scene scena = scenario.getScene();
         scenario.sizeToScene();
         scenario.minWidthProperty().bind(scena.widthProperty());
         scenario.minHeightProperty().bind(scena.heightProperty());
         scenario.show();
+        scenario.requestFocus();
+        scenario.getIcons().add(new Image(RelativeLocation.location("image/iconKey.png").toString()));
     }
     
-    public static void show(String file){          
-        try {
-            ZipFile zipfile = new ZipFile(System.getProperty("java.class.path"));
-            ZipEntry entry = zipfile.getEntry(file);            
-            URL location = ClassLoader.getSystemResource(entry.getName());        
-            Parent root = FXMLLoader.load(location);
+    public static void show(String file) throws IOException{
+            Parent root = FXMLLoader.load(RelativeLocation.location(file));
             Scene scene = new Scene(root);        
             scenario.setScene(scene);
             show();
-        } catch (IOException ex) {
-            System.out.println("Erro: "+ex.getMessage());
-        }
     }
     
     public static void show(String file, Object controller){
-        try {
-            ZipFile zipfile = new ZipFile(System.getProperty("java.class.path"));            
-            ZipEntry entry = zipfile.getEntry(file);            
-            URL location = ClassLoader.getSystemResource(entry.getName());            
-            FXMLLoader loader = new FXMLLoader(location);
+        try {          
+            FXMLLoader loader = new FXMLLoader(RelativeLocation.location(file));
             loader.setController(controller);
             Parent root = loader.load();
             Scene scene = new Scene(root);        

@@ -44,7 +44,7 @@ public class CriarNovoFXMLController implements Initializable {
 
         if(UsuarioCache.isEmpty()){
             Notify.warning("É necessário estar logado coom um conta de usuário!");
-        }else if(titulo.trim().isEmpty()||usuario.trim().isEmpty()||email.trim().isEmpty()||senha.trim().isEmpty()){
+        }else if(titulo.trim().isEmpty()||(usuario.trim().isEmpty()&&email.trim().isEmpty())||senha.trim().isEmpty()){
             Notify.warning("Preencha correntamente todos os campos!");
         }else{                
             Manager manager = new Manager();

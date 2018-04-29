@@ -6,7 +6,11 @@
 package control;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.util.RelativeLocation;
 import model.util.Scenario;
 
 /**
@@ -17,6 +21,9 @@ public class Principal extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(RelativeLocation.location("view/WaiteFXML.fxml"));
+        Scene scenario = new Scene(root);
+        scenario.lookup("#Tela");
         try{
             Scenario.setStage(primaryStage);
             Scenario.show("view/LoginFXML.fxml");
