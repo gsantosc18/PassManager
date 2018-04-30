@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import com.jfoenix.controls.*?>
@@ -23,7 +24,8 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <JFXButton buttonType="RAISED" layoutX="552.0" layoutY="17.0" onAction="#actionCriarNovo" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: green;" text="Criar Novo" textFill="#fcfcfc" AnchorPane.rightAnchor="14.0">
+            <Separator layoutX="628.0" layoutY="17.0" orientation="VERTICAL" prefHeight="25.0" prefWidth="1.0" AnchorPane.rightAnchor="66.0" AnchorPane.topAnchor="16.0" />
+            <JFXButton buttonType="RAISED" layoutX="541.0" layoutY="16.0" onAction="#actionCriarNovo" prefHeight="25.0" prefWidth="81.0" style="-fx-background-color: green;" text="Chave" textFill="#fcfcfc" AnchorPane.rightAnchor="78.0" AnchorPane.topAnchor="16.0">
                <graphic>
                   <Label text="+" textFill="#fffefe">
                      <font>
@@ -32,16 +34,29 @@
                   </Label>
                </graphic>
             </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="641.0" layoutY="16.0" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: black; -fx-border-radius: 20;" text="SAIR" textFill="WHITE" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="16.0">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
          </children>
       </AnchorPane>
    </top>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="tableLista" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy></TableView>
+            <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <content>
+                  <TableView fx:id="tableLista">
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </content>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </ScrollPane>
          </children>
       </AnchorPane>
    </center>
