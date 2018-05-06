@@ -40,17 +40,29 @@ public class TableManagerFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         TableColumn<ListView, String> id = new TableColumn<>("ID");
-        id.setCellValueFactory(new PropertyValueFactory<ListView, String>("ID"));
+        id.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        id.setPrefWidth(40);
+        id.setMaxWidth(40);
+        id.setMinWidth(40);
+        id.setResizable(false);
         
         TableColumn<ListView, String> titulo = new TableColumn<>("Título");
-        titulo.setCellValueFactory(new PropertyValueFactory<ListView, String>("titulo"));
+        titulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
         titulo.setMinWidth(355);
         
         TableColumn<ListView, String> cadastro = new TableColumn<>("Cadastro");
-        cadastro.setCellValueFactory(new PropertyValueFactory<ListView, String>("data_criacao"));
+        cadastro.setCellValueFactory(new PropertyValueFactory<>("data_criacao"));
+        cadastro.setPrefWidth(150);
+        cadastro.setMaxWidth(150);
+        cadastro.setMinWidth(150);
+        cadastro.setResizable(false);
         
         TableColumn<ListView, Button> control = new TableColumn<>("Controles");
-        control.setCellValueFactory(new PropertyValueFactory<ListView, Button>("detalhes"));
+        control.setCellValueFactory(new PropertyValueFactory<>("detalhes"));
+        control.setPrefWidth(100);
+        control.setMaxWidth(100);
+        control.setMinWidth(100);
+        control.setResizable(false);
         
         this.tableLista.getColumns().addAll(id,titulo, cadastro, control);
         
