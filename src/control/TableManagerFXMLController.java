@@ -19,6 +19,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -41,6 +42,7 @@ public class TableManagerFXMLController implements Initializable {
     @FXML private TableView<ListView> tableLista;
     
     @FXML private AnchorPane anchorPane;
+    @FXML private ScrollPane scrollPane;
     
     private Overlay overlay;
     
@@ -53,6 +55,8 @@ public class TableManagerFXMLController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(TableManagerFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        anchorPane.prefWidthProperty().bind(scrollPane.widthProperty());
         
         TableColumn<ListView, String> id = new TableColumn<>("ID");
         id.setCellValueFactory(new PropertyValueFactory<>("ID"));
@@ -83,33 +87,37 @@ public class TableManagerFXMLController implements Initializable {
         
         if(!UsuarioCache.isEmpty()){
             ObservableList<ListView> lista = FXCollections.observableArrayList();
-            
-            Platform.runLater(()->{            
-                ManagerDAO managerDAO = new ManagerDAO();
-                Usuario usuario = UsuarioCache.getUsuario();
-                List<Manager> listaManager = managerDAO.listaByIdUsuario(usuario.getIdUsuario());
+            new Thread(){
+                @Override
+                public void run(){
+                    Platform.runLater(()->{            
+                        ManagerDAO managerDAO = new ManagerDAO();
+                        Usuario usuario = UsuarioCache.getUsuario();
+                        List<Manager> listaManager = managerDAO.listaByIdUsuario(usuario.getIdUsuario());
 
-                for(Manager manager : listaManager){            
-                    try {
-                        ListView listViewManager;
-                        SimpleDateFormat formatDateOUT;
-                        SimpleDateFormat formatDateIN;
-                        String dataStr;
+                        for(Manager manager : listaManager){            
+                            try {
+                                ListView listViewManager;
+                                SimpleDateFormat formatDateOUT;
+                                SimpleDateFormat formatDateIN;
+                                String dataStr;
 
-                        formatDateOUT = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-                        formatDateIN = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                                formatDateOUT = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                                formatDateIN = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-                        dataStr = formatDateOUT.format(formatDateIN.parse(manager.getCadastro().toString()));
+                                dataStr = formatDateOUT.format(formatDateIN.parse(manager.getCadastro().toString()));
 
-                        listViewManager = new ListView(manager.getIdManager(), manager.getTitulo(),dataStr);
-                        lista.add(listViewManager);
-                    } catch (ParseException ex) {
-                        Logger.getLogger(TableManagerFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-                    }            
+                                listViewManager = new ListView(manager.getIdManager(), manager.getTitulo(),dataStr);
+                                lista.add(listViewManager);
+                            } catch (ParseException ex) {
+                                Logger.getLogger(TableManagerFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                            }            
+                        }
+
+                        tableLista.setItems(lista); 
+                    }); 
                 }
-
-                tableLista.setItems(lista); 
-            });       
+            }.start();      
         }else{
             System.out.println("O usuário guardado no cache está vazio!");
         }

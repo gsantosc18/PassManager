@@ -42,6 +42,14 @@ public class ManagerDAO {
         transaction.commit();
     }
     
+    public void update(Manager manager){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();;
+        Transaction transaction = session.beginTransaction();  
+        
+        session.update(manager);
+        transaction.commit();
+    }
+    
     /**
      * @param id
      * @return Manager

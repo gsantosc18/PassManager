@@ -15,7 +15,7 @@ import org.hibernate.Transaction;
 public class UsuarioDAO {
         
     public Usuario login(String email, String senha) throws NoSuchAlgorithmException{
-        Usuario usuario = null;
+        Usuario usuario;
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction = session.beginTransaction();       
         
@@ -28,14 +28,25 @@ public class UsuarioDAO {
         return usuario;
     }
     
+    public Usuario findByName(String nome){
+        Usuario usuario;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction = session.beginTransaction();       
+        
+        usuario = (Usuario) session.createQuery("From Usuario where login = ?")
+        .setParameter(0, nome)
+        .uniqueResult();
+        transaction.commit();
+        
+        return usuario;
+    }
+    
     public void insert(Usuario usuario) throws NoSuchAlgorithmException{
         Session session;
         Transaction transaction;
         
         session = HibernateUtil.getSessionFactory().getCurrentSession();
-        transaction = session.beginTransaction();  
-        
-        usuario.setSenha(EncryptMD5.encrypt(usuario.getSenha()));
+        transaction = session.beginTransaction();
         
         session.save(usuario);
         transaction.commit();

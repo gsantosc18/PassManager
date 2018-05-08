@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.security.NoSuchAlgorithmException;
 import model.dao.ManagerDAO;
 import model.dao.UsuarioDAO;
 import model.entity.Manager;
@@ -15,7 +16,7 @@ import model.entity.Usuario;
  * @author myhouse
  */
 public class TesteCriaNovo {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchAlgorithmException {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         Usuario usuario = usuarioDAO.login("gsantosc18", "123456789");
         

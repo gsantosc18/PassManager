@@ -64,7 +64,7 @@ public class DetalheFXMLController implements Initializable {
     }
     
     @FXML private void actionEditar(){
-        Notify.info("Essa função ainda não foi habilitada! :-(");
+        Scenario.show("view/EditarFXML.fxml", new EditarFXMLController(manager)); 
     }
     
     @FXML private void actionApagar() throws IOException{

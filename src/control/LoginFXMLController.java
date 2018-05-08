@@ -59,11 +59,10 @@ public class LoginFXMLController implements Initializable {
         String login = this.lbLogin.getText();
         String senha = this.lbSenha.getText();
         
-        overlay.show();
-
         if(login.trim().isEmpty()||senha.trim().isEmpty()){
             Notify.info("Preencha corretamente o Login e Senha");
         }else{
+            overlay.show();
             new Thread(() -> {
                 try {
                     UsuarioDAO usuarioDao = new UsuarioDAO();
@@ -79,7 +78,7 @@ public class LoginFXMLController implements Initializable {
                                 }
                             });
                     }else{
-                        Platform.runLater(()->{Notify.warning("Algum coisa tá errado aí! :(");});
+                        Notify.warning("Algum coisa tá errado aí! :(");
                     }
                 } catch (NoSuchAlgorithmException ex) {
                     Logger.getLogger(LoginFXMLController.class.getName()).log(Level.SEVERE, null, ex);

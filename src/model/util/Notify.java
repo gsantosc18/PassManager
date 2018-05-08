@@ -10,15 +10,15 @@ public class Notify {
     static private Alert alert;
     
     public static void erro(String message){
-        alert(AlertType.ERROR, message, "Erro", true);
+        Platform.runLater(()->alert(AlertType.ERROR, message, "Erro", true));        
     }
     
     public static void info(String message){
-        alert(AlertType.INFORMATION, message, "Informação", true);
+        Platform.runLater(()->alert(AlertType.INFORMATION, message, "Informação", true));
     }
     
     public static void warning(String message){
-        alert(AlertType.CONFIRMATION, message, "Atenção", true);
+        Platform.runLater(()->alert(AlertType.WARNING, message, "Atenção", true));
     }
     
     public static Optional<ButtonType> confirm(String message, String header){
