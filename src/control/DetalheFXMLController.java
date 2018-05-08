@@ -5,15 +5,20 @@
  */
 package control;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javax.crypto.NoSuchPaddingException;
 import model.dao.ManagerDAO;
 import model.entity.Manager;
+import model.util.HashCode;
 import model.util.Notify;
 import model.util.Scenario;
 
@@ -40,12 +45,18 @@ public class DetalheFXMLController implements Initializable {
     }
     
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) {        
         this.lbTitulo.setText(this.manager.getTitulo());
         this.lbUrl.setText(this.manager.getUrl());
         this.lbUsuario.setText(this.manager.getUsuario_1());
         this.lbEmail.setText(this.manager.getEmail());
-        this.lbSenha.setText(this.manager.getSenha());
+        try {
+            this.lbSenha.setText(new HashCode().decodifica(this.manager.getSenha()));
+        } catch (NoSuchAlgorithmException | NoSuchProviderException | NoSuchPaddingException | UnsupportedEncodingException ex) {
+            System.out.println("Erro: "+ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println("Erro: "+ex.getMessage());
+        }
     }
     
     @FXML private void actionBack() throws IOException{
@@ -53,7 +64,7 @@ public class DetalheFXMLController implements Initializable {
     }
     
     @FXML private void actionEditar(){
-        
+        Notify.info("Essa função ainda não foi habilitada! :-(");
     }
     
     @FXML private void actionApagar() throws IOException{

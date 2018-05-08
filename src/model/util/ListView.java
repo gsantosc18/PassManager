@@ -7,10 +7,7 @@ package model.util;
 
 import com.jfoenix.controls.JFXButton;
 import control.DetalheFXMLController;
-import java.io.IOException;
-import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -31,12 +28,11 @@ public class ListView {
         this.detalhes = new JFXButton("Detalhes");
         detalhes.setStyle("-fx-background-color: blue;-fx-text-fill: #FFFFFF;");
         
-        this.detalhes.setOnAction(new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event) {
+        this.detalhes.setOnAction((ActionEvent event) -> {
+            Platform.runLater(()->{
                 Manager manager = new ManagerDAO().findById(getID());
                 Scenario.show("view/DetalheFXML.fxml", new DetalheFXMLController(manager));
-            }
+            });
         });
     }
 
