@@ -6,6 +6,7 @@
 package model.util;
 
 import java.io.IOException;
+import java.net.URL;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -40,11 +41,18 @@ public class Scenario {
         scenario.minHeightProperty().bind(scena.heightProperty());
         scenario.show();
         scenario.requestFocus();
-        scenario.getIcons().add(new Image(RelativeLocation.location("image/iconKey.png").toString()));
+//        scenario.getIcons().add(new Image(Scenario.class.getClass().getResourceAsStream("image/iconKey.png")));
     }
     
     public static void show(String file) throws IOException{
             Parent root = FXMLLoader.load(RelativeLocation.location(file));
+            Scene scene = new Scene(root);        
+            scenario.setScene(scene);
+            show();
+    }
+    
+    public static void show(URL file) throws IOException{
+            Parent root = FXMLLoader.load(file);
             Scene scene = new Scene(root);        
             scenario.setScene(scene);
             show();

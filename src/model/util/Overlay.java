@@ -13,7 +13,7 @@ import javafx.scene.layout.AnchorPane;
 
 public class Overlay {
     
-    private final URL location = RelativeLocation.location("view/WaiteFXML.fxml");
+    private final URL location = Overlay.class.getClass().getResource("/view/WaiteFXML.fxml");
     private final AnchorPane anchorOverlayer;
     
     public Overlay() throws IOException{
