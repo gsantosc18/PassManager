@@ -125,12 +125,12 @@ public class TableManagerFXMLController implements Initializable {
     
     @FXML private void actionCriarNovo() throws IOException{
         overlay.show();
-        Scenario.show("view/CriarNovoFXML.fxml");
+        Scenario.show(TableManagerFXMLController.class.getClass().getResource("/view/CriarNovoFXML.fxml"));
     }
     
     @FXML private void actionClose() throws IOException{
         overlay.show();
-        Scenario.show("view/LoginFXML.fxml");
+        Scenario.show(TableManagerFXMLController.class.getClass().getResource("/view/LoginFXML.fxml"));
     }
     
 }

@@ -41,7 +41,7 @@ public class Scenario {
         scenario.minHeightProperty().bind(scena.heightProperty());
         scenario.show();
         scenario.requestFocus();
-//        scenario.getIcons().add(new Image(Scenario.class.getClass().getResourceAsStream("image/iconKey.png")));
+        scenario.getIcons().add(new Image(Scenario.class.getClass().getResourceAsStream("/image/iconKey.png")));
     }
     
     public static void show(String file) throws IOException{
@@ -61,6 +61,19 @@ public class Scenario {
     public static void show(String file, Object controller){
         try {          
             FXMLLoader loader = new FXMLLoader(RelativeLocation.location(file));
+            loader.setController(controller);
+            Parent root = loader.load();
+            Scene scene = new Scene(root);        
+            scenario.setScene(scene);
+            show();
+        } catch (Exception ex) {
+            System.out.println("Erro: "+ex.getMessage());
+        }
+    }
+    
+    public static void show(URL file, Object controller){
+        try {          
+            FXMLLoader loader = new FXMLLoader(file);
             loader.setController(controller);
             Parent root = loader.load();
             Scene scene = new Scene(root);        

@@ -75,7 +75,7 @@ public class CadastroFXMLController implements Initializable {
                             usuario.setSenha(EncryptMD5.encrypt(senha));
                             usuarioDAO.insert(usuario);
                             Notify.info("Seu usuário foi criado com sucesso!");
-                            actionBack();
+                            Platform.runLater(()-> actionBack() );
                         }
                         overlay.hide();
                     } catch (NoSuchAlgorithmException ex) {
@@ -88,7 +88,7 @@ public class CadastroFXMLController implements Initializable {
     
     @FXML private void actionBack(){
         try {
-            Scenario.show("view/LoginFXML.fxml");
+            Scenario.show(CadastroFXMLController.class.getClass().getResource("/view/LoginFXML.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(CadastroFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }

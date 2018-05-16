@@ -60,11 +60,11 @@ public class DetalheFXMLController implements Initializable {
     }
     
     @FXML private void actionBack() throws IOException{
-        Scenario.show("view/TableManagerFXML.fxml");
+        Scenario.show(DetalheFXMLController.class.getClass().getResource("/view/TableManagerFXML.fxml"));
     }
     
     @FXML private void actionEditar(){
-        Scenario.show("view/EditarFXML.fxml", new EditarFXMLController(manager)); 
+        Scenario.show(DetalheFXMLController.class.getClass().getResource("/view/EditarFXML.fxml"), new EditarFXMLController(manager)); 
     }
     
     @FXML private void actionApagar() throws IOException{

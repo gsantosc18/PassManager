@@ -31,7 +31,7 @@ public class ListView {
         this.detalhes.setOnAction((ActionEvent event) -> {
             Platform.runLater(()->{
                 Manager manager = new ManagerDAO().findById(getID());
-                Scenario.show("view/DetalheFXML.fxml", new DetalheFXMLController(manager));
+                Scenario.show(DetalheFXMLController.class.getClass().getResource("/view/DetalheFXML.fxml"), new DetalheFXMLController(manager));
             });
         });
     }
