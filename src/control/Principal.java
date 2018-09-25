@@ -17,8 +17,7 @@ public class Principal extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Scenario.setStage(primaryStage);
-        Scenario.show(Principal.class.getClass().getResource("/view/LoginFXML.fxml"));
+        Scenario.show(Principal.class.getClass().getResource("/view/LoginFXML.fxml"),primaryStage);
     }
     
     public static void main(String[] args) {

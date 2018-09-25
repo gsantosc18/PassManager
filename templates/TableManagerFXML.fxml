@@ -8,7 +8,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.TableManagerFXMLController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <AnchorPane style="-fx-background-color: #424242 grey darken-3;">
          <children>
@@ -16,7 +16,7 @@
                <children>
                   <ImageView fitHeight="59.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../image/keyring-icon.png" />
+                        <Image url="@../../../Imagens/keyring-icon.png" />
                      </image>
                   </ImageView>
                   <Label text="GERENCIADOR DE SENHAS" textFill="WHITE" wrapText="true">
@@ -38,7 +38,7 @@
                      <graphic>
                         <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../image/power.png" />
+                              <Image url="@../../../Imagens/power.png" />
                            </image>
                         </ImageView>
                      </graphic>

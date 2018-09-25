@@ -11,6 +11,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ButtonType;
@@ -59,22 +60,22 @@ public class DetalheFXMLController implements Initializable {
         }
     }
     
-    @FXML private void actionBack() throws IOException{
-        Scenario.show(DetalheFXMLController.class.getClass().getResource("/view/TableManagerFXML.fxml"));
+    @FXML private void actionBack(Event event) throws IOException{
+        Scenario.show(DetalheFXMLController.class.getClass().getResource("/view/TableManagerFXML.fxml"),event);
     }
     
-    @FXML private void actionEditar(){
-        Scenario.show(DetalheFXMLController.class.getClass().getResource("/view/EditarFXML.fxml"), new EditarFXMLController(manager)); 
+    @FXML private void actionEditar(Event event){
+        Scenario.show(DetalheFXMLController.class.getClass().getResource("/view/EditarFXML.fxml"), new EditarFXMLController(manager),event); 
     }
     
-    @FXML private void actionApagar() throws IOException{
+    @FXML private void actionApagar(Event event) throws IOException{
         Optional<ButtonType> response = Notify.confirm("Você tem certeza que quer apagar?", "Apagar "+manager.getTitulo()+"?");
         
         if(response.get()==ButtonType.OK){
             ManagerDAO managerDAO = new ManagerDAO();
             managerDAO.delete(manager);
             Notify.info("O registro foi deletado com sucesso!");
-            actionBack();
+            actionBack(event);
         }
     }
     

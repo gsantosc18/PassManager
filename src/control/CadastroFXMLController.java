@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
@@ -49,7 +50,7 @@ public class CadastroFXMLController implements Initializable {
         }
     }    
     
-    @FXML private void actionDoCadastro(){
+    @FXML private void actionDoCadastro(Event event){
         String login = lbLogin.getText();
         String senha = lbSenha.getText();
         String cSenha = lbConfirmSenha.getText();
@@ -75,7 +76,7 @@ public class CadastroFXMLController implements Initializable {
                             usuario.setSenha(EncryptMD5.encrypt(senha));
                             usuarioDAO.insert(usuario);
                             Notify.info("Seu usuário foi criado com sucesso!");
-                            Platform.runLater(()-> actionBack() );
+                            Platform.runLater(()-> actionBack(event) );
                         }
                         overlay.hide();
                     } catch (NoSuchAlgorithmException ex) {
@@ -86,9 +87,9 @@ public class CadastroFXMLController implements Initializable {
         }
     }
     
-    @FXML private void actionBack(){
+    @FXML private void actionBack(Event event){
         try {
-            Scenario.show(CadastroFXMLController.class.getClass().getResource("/view/LoginFXML.fxml"));
+            Scenario.show(CadastroFXMLController.class.getClass().getResource("/view/LoginFXML.fxml"),event);
         } catch (IOException ex) {
             Logger.getLogger(CadastroFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -51,12 +52,12 @@ public class TableManagerFXMLController implements Initializable {
         
         try {
             overlay = new Overlay();
-            anchorPane.getChildren().add(overlay.getAnchorPane());
+//            anchorPane.getChildren().add(overlay.getAnchorPane());
         } catch (IOException ex) {
             Logger.getLogger(TableManagerFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        anchorPane.prefWidthProperty().bind(scrollPane.widthProperty());
+//        anchorPane.prefWidthProperty().bind(scrollPane.widthProperty());
         
         TableColumn<ListView, String> id = new TableColumn<>("ID");
         id.setCellValueFactory(new PropertyValueFactory<>("ID"));
@@ -123,14 +124,14 @@ public class TableManagerFXMLController implements Initializable {
         }
     }
     
-    @FXML private void actionCriarNovo() throws IOException{
+    @FXML private void actionCriarNovo(Event event) throws IOException{
         overlay.show();
-        Scenario.show(TableManagerFXMLController.class.getClass().getResource("/view/CriarNovoFXML.fxml"));
+        Scenario.show(TableManagerFXMLController.class.getClass().getResource("/view/CriarNovoFXML.fxml"),event);
     }
     
-    @FXML private void actionClose() throws IOException{
+    @FXML private void actionClose(Event event) throws IOException{
         overlay.show();
-        Scenario.show(TableManagerFXMLController.class.getClass().getResource("/view/LoginFXML.fxml"));
+        Scenario.show(TableManagerFXMLController.class.getClass().getResource("/view/LoginFXML.fxml"),event);
     }
     
 }

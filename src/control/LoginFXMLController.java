@@ -14,9 +14,11 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import model.dao.UsuarioDAO;
 import model.entity.Usuario;
@@ -36,7 +38,7 @@ public class LoginFXMLController implements Initializable {
     
     @FXML JFXPasswordField lbSenha;
     
-    @FXML AnchorPane anchorPane;
+    @FXML HBox anchorPane;
     
     @FXML Pane wrap;
     
@@ -48,14 +50,14 @@ public class LoginFXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {        
         try {
             overlay = new Overlay();            
-            anchorPane.getChildren().add(overlay.getAnchorPane());
+//            anchorPane.getChildren().add(overlay.getAnchorPane());
         } catch (IOException ex) {
             Logger.getLogger(LoginFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    
     
     
-    @FXML private void actionLogin() throws IOException{
+    @FXML private void actionLogin(Event event) throws IOException{
         String login = this.lbLogin.getText();
         String senha = this.lbSenha.getText();
         
@@ -72,7 +74,7 @@ public class LoginFXMLController implements Initializable {
                             UsuarioCache.setUsuario(usuario);
                             Platform.runLater(()->{
                                 try {
-                                    Scenario.show("view/TableManagerFXML.fxml");
+                                    Scenario.show(LoginFXMLController.class.getClass().getResource("/view/TableManagerFXML.fxml"),event);
                                 } catch (IOException ex) {
                                     System.out.println("Erro: "+ex.getMessage());
                                 }
@@ -87,7 +89,7 @@ public class LoginFXMLController implements Initializable {
         }
     }
     
-    @FXML private void actionCadastro() throws IOException{
-        Scenario.show("view/CadastroFXML.fxml");
+    @FXML private void actionCadastro(Event event) throws IOException{
+        Scenario.show(LoginFXMLController.class.getClass().getResource("/view/CadastroFXML.fxml"),event);
     }
 }

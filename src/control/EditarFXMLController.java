@@ -85,12 +85,12 @@ public class EditarFXMLController implements Initializable {
         
         Notify.info("Sua alteração foi realizada com sucesso!");
         
-        Scenario.show(EditarFXMLController.class.getClass().getResource("/view/DetalheFXML.fxml"), new DetalheFXMLController(managerDAO.findById(manager.getIdManager())));
+        Scenario.show(EditarFXMLController.class.getClass().getResource("/view/DetalheFXML.fxml"), new DetalheFXMLController(managerDAO.findById(manager.getIdManager())),event);
     }
 
     @FXML
     private void actionCancelar(ActionEvent event) throws IOException {
-        Scenario.show(EditarFXMLController.class.getClass().getResource("/view/TableManagerFXML.fxml"));
+        Scenario.show(EditarFXMLController.class.getClass().getResource("/view/TableManagerFXML.fxml"),event);
     }
     
 }

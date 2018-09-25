@@ -9,7 +9,6 @@ import com.jfoenix.controls.JFXButton;
 import control.DetalheFXMLController;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import model.dao.ManagerDAO;
 import model.entity.Manager;
@@ -31,7 +30,7 @@ public class ListView {
         this.detalhes.setOnAction((ActionEvent event) -> {
             Platform.runLater(()->{
                 Manager manager = new ManagerDAO().findById(getID());
-                Scenario.show(DetalheFXMLController.class.getClass().getResource("/view/DetalheFXML.fxml"), new DetalheFXMLController(manager));
+                Scenario.show(DetalheFXMLController.class.getClass().getResource("/view/DetalheFXML.fxml"), new DetalheFXMLController(manager),event);
             });
         });
     }

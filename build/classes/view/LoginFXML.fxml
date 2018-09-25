@@ -1,28 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.text.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
 <?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.LoginFXMLController">
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #37474f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.LoginFXMLController">
    <children>
-      <Pane fx:id="wrap" layoutX="134.0" layoutY="43.0" prefHeight="314.0" prefWidth="333.0">
+      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="333.0">
          <children>
-            <ImageView fitHeight="112.0" fitWidth="111.0" layoutX="111.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/iconLogin.png" />
-               </image>
-            </ImageView>
-            <JFXTextField fx:id="lbLogin" labelFloat="true" layoutX="10.0" layoutY="143.0" prefHeight="25.0" prefWidth="313.0" promptText="Login" />
-            <JFXPasswordField fx:id="lbSenha" layoutX="10.0" layoutY="180.0" prefHeight="25.0" prefWidth="313.0" promptText="Senha" />
-            <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="228.0" onAction="#actionLogin" prefHeight="25.0" prefWidth="313.0" style="-fx-background-color: green;" text="Entrar" textFill="WHITE" />
-            <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="275.0" onAction="#actionCadastro" prefHeight="25.0" prefWidth="313.0" style="-fx-background-color: blue;" text="Cadastrar" textFill="WHITE" />
+            <VBox alignment="TOP_CENTER" prefHeight="259.0" prefWidth="333.0" style="-fx-background-color: #eee;">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/gender-neutral-user.png" />
+                     </image>
+                  </ImageView>
+                  <JFXTextField fx:id="lbLogin" labelFloat="true" onAction="#actionLogin" promptText="Login" />
+                  <JFXPasswordField fx:id="lbSenha" onAction="#actionLogin" promptText="Senha">
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin>
+                  </JFXPasswordField>
+                  <HBox prefHeight="15.0" prefWidth="293.0">
+                     <children>
+                        <HBox prefHeight="5.0" prefWidth="148.0">
+                           <children>
+                              <JFXButton onAction="#actionCadastro" text="Cadastra-se" textFill="#0d47a1" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="TOP_RIGHT" prefHeight="7.0" prefWidth="147.0">
+                           <children>
+                              <JFXButton text="Esqueceu a senha?" textFill="#0d47a1" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="15.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <JFXButton buttonType="RAISED" onAction="#actionLogin" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: #00c853;" text="Entrar" textFill="WHITE" />
+               </children>
+               <padding>
+                  <Insets bottom="25.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </VBox>
          </children>
-      </Pane>
+      </VBox>
    </children>
-</AnchorPane>
+</HBox>

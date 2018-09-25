@@ -14,6 +14,7 @@ import java.security.NoSuchProviderException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
@@ -53,7 +54,7 @@ public class CriarNovoFXMLController implements Initializable {
         }
     }
     
-    @FXML private void actionDoCadastrarNovo() throws IOException{
+    @FXML private void actionDoCadastrarNovo(Event event) throws IOException{
         String titulo = this.lbTitulo.getText();
         String usuario = this.lbUsuario.getText();
         String email = this.lbEmail.getText();
@@ -87,7 +88,7 @@ public class CriarNovoFXMLController implements Initializable {
                 
                 Notify.info("Chave de acesso foi cadastrada com sucesso!");
 
-                actionCancelar();
+                actionCancelar(event);
             }catch(Exception e){
                 System.out.println("Erro: "+e.getMessage());
                 Notify.erro("Houve um erro no cadastro da credencial!");
@@ -95,8 +96,8 @@ public class CriarNovoFXMLController implements Initializable {
         }
     }
     
-    @FXML private void actionCancelar() throws IOException{
-        Scenario.show(CriarNovoFXMLController.class.getClass().getResource("/view/TableManagerFXML.fxml"));
+    @FXML private void actionCancelar(Event event) throws IOException{
+        Scenario.show(CriarNovoFXMLController.class.getClass().getResource("/view/TableManagerFXML.fxml"),event);
     }
     
 }
